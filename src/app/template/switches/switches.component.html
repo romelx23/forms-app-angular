@@ -7,18 +7,102 @@
       <h2 class="w-20">Género</h2>
       <div class="flex flex-col">
         <div class="flex items-center space-x-2">
-          <input type="radio" name="radio" id="radio" class="p-3"/>
-          <label for="radio" class="inline-block hover:cursor-pointer"> Default radio 1</label>
+          <input 
+          type="radio"
+           name="radio" 
+           id="radio" 
+           value="M"
+           [(ngModel)]="persona.genero"
+            class="p-3"
+            required
+             />
+          <label for="radio" class="inline-block hover:cursor-pointer"
+            >Masculino</label
+          >
         </div>
         <div class="flex items-center space-x-2">
-          <input type="radio" name="radio" id="radio2" class="p-3 checked:bg-blue-500"/>
-          <label for="radio2" class="inline-block hover:cursor-pointer"> Default radio 2 </label>
-        </div>
-        <div class="flex items-center space-x-2">
-          <input type="radio" name="radio" id="radio3" class="p-3 checked:bg-blue-500"/>
-          <label for="radio3" class="inline-block hover:cursor-pointer"> Default radio 3 </label>
+          <input
+            type="radio"
+            name="radio"
+            id="radio2" 
+            value="F"
+            [(ngModel)]="persona.genero"
+            class="p-3 checked:bg-blue-500"
+            required
+          />
+          <label for="radio2" class="inline-block hover:cursor-pointer"
+            >Femenino</label
+          >
         </div>
       </div>
     </div>
+    <!-- Switches -->
+    <div class="flex">
+      <h2 class="mr-3 w-28">Notificaciones</h2>
+      <div class="flex flex-col">
+        <div class="flex items-center justify-center space-x-2">
+          <input
+            type="checkbox"
+            name="notificaciones"
+            id="noti"
+            [(ngModel)]="persona.notificaciones"
+            class="px-6 w-9 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain checked:bg-gray-600 focus:outline-none cursor-pointer shadow-sm"
+          />
+          <label for="noti" class="inline-block hover:cursor-pointer"
+            >Quiero recibir notificaciones</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="mr-3 w-28"></h2>
+      <div class="flex flex-col">
+        <div class="flex items-center justify-center space-x-2">
+          <input
+            type="checkbox"
+            name="noti"
+            id="term"
+            name="terminos"
+            [(ngModel)]="terminosYCondiciones"
+            class="px-6 w-9 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain checked:bg-gray-600 focus:outline-none cursor-pointer shadow-sm"
+            required
+          />
+          <label for="term" class="inline-block hover:cursor-pointer"
+            >Terminos y condiciones de uso</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-3">
+      <button
+        type="submit"
+        [disabled]="miFormulario.invalid"
+        class="button btn__primary w-40"
+      >
+        Guardar
+      </button>
+    </div>
   </form>
 </div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Valor del formulario: </span>
+  <pre class="pl-4">{{ miFormulario.value | json }}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Persona: </span>
+  <pre class="pl-4">{{ persona | json }}</pre>
+</div>
+
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Valid: </span>
+  <pre class="pl-4">{{ miFormulario.valid }}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Términos: </span>
+  <pre class="pl-4">{{ miFormulario.controls['terminos']?.errors | json}}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Condiciones: </span>
+  <!-- <pre class="pl-4">{{ miFormulario.valid }}</pre> -->
+</div>
+
