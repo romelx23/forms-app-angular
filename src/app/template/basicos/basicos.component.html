@@ -1,0 +1,84 @@
+<h1 class="font-semibold text-2xl mb-3">Template: Básicos</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form
+    action=""
+    (ngSubmit)="guardar()"
+    #miFormulario="ngForm"
+    autocomplete="off"
+  >
+    <div class="flex">
+      <h2 class="w-20">Producto</h2>
+      <div class="flex flex-col">
+        <input
+          type="text"
+          [ngModel]="initForm.producto"
+          name="producto"
+          placeholder="Nombre del producto"
+          class="input"
+          minlength="3"
+          required
+        />
+        <div class="h-8">
+          <p class="text-red-400" *ngIf="nombreValido()">Debe de ser de 3 dígitos</p>
+          <p class="text-red-400" *ngIf="existenCampos()">Debe de rellenar el campo</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="w-20">Precio</h2>
+      <div class="flex flex-col">
+        <input
+          type="number"
+          [ngModel]="initForm.precio"
+          name="precio"
+          placeholder="Ingrese el precio"
+          class="input"
+          min="0"
+          required
+        />
+        <div class="h-8">
+          <p class="text-red-400" *ngIf="precioValido()">El precio debe ser mayor que 0</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="w-20">Exitencias</h2>
+      <input
+        type="number"
+        [ngModel]="initForm.existencia"
+        name="existencia"
+        placeholder="Existencias del Producto"
+        required
+        customMin
+        [minimo]="0"
+        class="input"
+      />
+    </div>
+    <div class="flex mt-3">
+      <button
+        type="submit"
+        [disabled]="miFormulario.invalid"
+        class="bg-blue-500 px-3 py-2 rounded-md hover:bg-blue-800 w-40"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+  <div class="flex flex-col space-y-3">
+    <span class="font-semibold text-xl">Valid: </span>
+    <pre class="pl-4">{{ miFormulario.valid | json }}</pre>
+
+    <span class="font-semibold text-xl">Prisitne: </span>
+    <pre class="pl-4">{{ miFormulario.pristine }}</pre>
+
+    <span class="font-semibold text-xl">Touched: </span>
+    <pre class="pl-4">{{ miFormulario.touched }}</pre>
+
+    <span class="font-semibold text-xl">Valor: </span>
+    <pre class="pl-4">{{ miFormulario.value | json }}</pre>
+
+    <span class="font-semibold text-xl">Custom Directives: </span>
+    <pre class="pl-4">{{ miFormulario.controls['exitencias']?.errors }}</pre>
+  </div>
+</div>

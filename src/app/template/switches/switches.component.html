@@ -1,0 +1,24 @@
+<h1 class="font-semibold text-2xl mb-3">Template: Switches</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form action="" #miFormulario="ngForm" autocomplete="off">
+    <!-- Nombre -->
+    <div class="flex">
+      <h2 class="w-20">Género</h2>
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-2">
+          <input type="radio" name="radio" id="radio" class="p-3"/>
+          <label for="radio" class="inline-block hover:cursor-pointer"> Default radio 1</label>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="radio" name="radio" id="radio2" class="p-3 checked:bg-blue-500"/>
+          <label for="radio2" class="inline-block hover:cursor-pointer"> Default radio 2 </label>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="radio" name="radio" id="radio3" class="p-3 checked:bg-blue-500"/>
+          <label for="radio3" class="inline-block hover:cursor-pointer"> Default radio 3 </label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

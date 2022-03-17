@@ -1,0 +1,84 @@
+<h1 class="font-semibold text-2xl mb-3">Template: Dinámicos</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form action="" #miFormulario="ngForm" autocomplete="off">
+    <!-- Nombre -->
+    <div class="flex">
+      <h2 class="w-20">Nombre</h2>
+      <div class="flex flex-col">
+        <input
+          type="text"
+          [(ngModel)]="persona.nombre"
+          name="name"
+          placeholder="Nombre del producto"
+          class="input"
+          minlength="3"
+          required
+        />
+        <div class="h-8 flex gap-3">
+          <p class="text-red-400" *ngIf="nombreValido()">
+            Debe de ser de 3 dígitos
+          </p>
+          <p class="text-red-400" *ngIf="nombreRequerido()">
+            El nombre es requerido
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- FAVORTIOS -->
+    <div class="flex mb-2">
+      <h2 class="w-20">Agregar</h2>
+      <div class="flex">
+        <input
+          type="text"
+          [(ngModel)]="nuevoJuego"
+          name="nuevoJuego"
+          placeholder="Agregar Favorito"
+          class="input"
+          required
+        />
+        <button class="button btn__primary ml-2"
+            (click)="agregarJuego()"
+        >Agregar</button>
+      </div>
+      <div class="h-8 flex gap-3">
+        <p class="text-red-400" *ngIf="miFormulario.controls['errors']">
+          El nombre es requerido
+        </p>
+      </div>
+    </div>
+
+    <div class="flex">
+        <h2 class="w-20">Favoritos</h2>
+        <div class="flex flex-col gap-2">
+          <div class="flex" *ngFor="let juego of persona.favoritos;let i=index">
+            <input
+              type="text"
+              [(ngModel)]="juego.nombre"
+              name="favorito_{{i}}"
+              placeholder="Nombre del favorito"
+              class="input"
+              required
+            />
+            <button class="button ml-2 btn__danger" (click)="eliminar(i)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+
+    <div class="flex mt-3">
+      <button
+        type="submit"
+        [disabled]="miFormulario.invalid"
+        (click)="guardar()"
+        class="button btn__primary w-40"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="flex flex-col space-y-3">
+    <span class="font-semibold text-xl">Persona: </span>
+    <pre class="pl-4">{{ persona | json }}</pre>
+</div>
