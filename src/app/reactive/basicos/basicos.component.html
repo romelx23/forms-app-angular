@@ -1,1 +1,90 @@
-<p>basicos works!</p>
+<h1 class="font-semibold text-2xl mb-3">Template: Básicos</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+    <div class="flex">
+      <h2 class="w-20">Nombre</h2>
+      <div class="flex flex-col">
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre del producto"
+          class="input"
+          formControlName="nombre"
+        />
+        <div class="min-h-[20px] flex flex-col gap-3 py-3">
+          <p class="text-red-400" *ngIf="minLength('nombre')">
+            Debe de ser de 3 dígitos
+          </p>
+          <p class="text-red-400" *ngIf="campoNoValido('nombre')">
+            Debe de rellenar el campo
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="w-20">Precio</h2>
+      <div class="flex flex-col">
+        <input
+          type="number"
+          name="precio"
+          placeholder="Ingrese el precio"
+          class="input"
+          formControlName="precio"
+        />
+        <div class="min-h-[20px] flex flex-col justify-center gap-3 py-3">
+          <p class="text-red-400" *ngIf="minValue('precio')">
+            Debe de ser mayor a 0
+          </p>
+          <p class="text-red-400" *ngIf="campoNoValido('precio')" >Debe de rellenar el campo</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="w-20">Exitencias</h2>
+      <div class="flex flex-col">
+        <input
+          type="number"
+          name="existencias"
+          placeholder="Existencias del Producto"
+          required
+          formControlName="existencias"
+          class="input"
+        />
+        <div class="min-h-[20px] flex flex-col justify-center gap-3">
+          <p class="text-red-400" *ngIf="minValue('existencias')">
+            Debe de ser mayor a 0
+          </p>
+          <p class="text-red-400" *ngIf="campoNoValido('existencias')">
+            Debe de rellenar el campo
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-3">
+      <button
+        type="submit"
+        
+        class="bg-blue-500 px-3 py-2 rounded-md hover:bg-blue-800 w-40"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+  <div class="flex flex-col space-y-3">
+    <span class="font-semibold text-xl">Valid: </span>
+    <pre class="pl-4">{{ miFormulario.valid | json }}</pre>
+
+    <span class="font-semibold text-xl">Prisitne: </span>
+    <pre class="pl-4">{{ miFormulario.pristine }}</pre>
+
+    <span class="font-semibold text-xl">Touched: </span>
+    <pre class="pl-4">{{ miFormulario.touched }}</pre>
+
+    <span class="font-semibold text-xl">Valor: </span>
+    <pre class="pl-4">{{ miFormulario.value | json }}</pre>
+
+    <span class="font-semibold text-xl">Errors: </span>
+    <pre class="pl-4">{{ miFormulario.controls['precio'].errors| json }}</pre>
+  </div>
+</div>

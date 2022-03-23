@@ -1,1 +1,97 @@
-<p>switches works!</p>
+<h1 class="font-semibold text-2xl mb-3">Template: Switches</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form action="" [formGroup]="miFormulario" autocomplete="off" (ngSubmit)="guardar()">
+    <!-- Nombre -->
+    <div class="flex">
+      <h2 class="w-20">Género</h2>
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-2">
+          <input type="radio" id="radio" value="M" class="p-3" 
+          formControlName="genero"
+          />
+          <label for="radio" class="inline-block hover:cursor-pointer"
+            >Masculino</label
+          >
+        </div>
+        <div class="flex items-center space-x-2">
+          <input
+            type="radio"
+            id="radio2"
+            value="F"
+            class="p-3 checked:bg-blue-500"
+            formControlName="genero"
+          />
+          <label for="radio2" class="inline-block hover:cursor-pointer"
+            >Femenino</label
+          >
+        </div>
+      </div>
+    </div>
+    <!-- Switches -->
+    <div class="flex">
+      <h2 class="mr-3 w-28">Notificaciones</h2>
+      <div class="flex flex-col">
+        <div class="flex items-center justify-center space-x-2">
+          <input
+            type="checkbox"
+            id="noti"
+            class="px-6 w-9 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain checked:bg-gray-600 focus:outline-none cursor-pointer shadow-sm"
+            formControlName="notificaciones"
+          />
+          <label for="noti" class="inline-block hover:cursor-pointer"
+            >Quiero recibir notificaciones</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <h2 class="mr-3 w-28"></h2>
+      <div class="flex flex-col">
+        <div class="flex items-center justify-center space-x-2">
+          <input
+            type="checkbox"
+            id="term"
+            name="terminos"
+            class="px-6 w-9 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain checked:bg-gray-600 focus:outline-none cursor-pointer shadow-sm"
+            formControlName="terminos"
+          />
+          <label for="term" class="inline-block hover:cursor-pointer"
+            >Terminos y condiciones de uso</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-3">
+      <button
+        type="submit"
+        [disabled]="miFormulario.invalid"
+        class="button btn__primary w-40"
+        type="submit"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Valor del formulario: </span>
+  <pre class="pl-4">{{ miFormulario.value | json }}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Persona: </span>
+  <pre class="pl-4">{{ persona | json }}</pre>
+</div>
+
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Valid: </span>
+  <pre class="pl-4">{{ miFormulario.valid }}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Términos: </span>
+  <pre class="pl-4">{{ miFormulario.controls["terminos"]?.errors | json }}</pre>
+</div>
+<div class="flex flex-col space-y-3">
+  <span class="font-semibold text-xl">Condiciones: </span>
+  <!-- <pre class="pl-4">{{ miFormulario.valid }}</pre> -->
+</div>
