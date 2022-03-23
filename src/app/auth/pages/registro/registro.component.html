@@ -1,0 +1,96 @@
+<h1 class="font-semibold text-2xl mb-3">Validaciones Reactivas</h1>
+<hr class="w-full" />
+<div class="flex flex-col mt-3 gap-3">
+  <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="submitForm()">
+    <div class="flex flex-col gap-3">
+        <!-- nombre -->
+      <div class="flex">
+        <h2 class="w-20">Nombre</h2>
+        <div class="flex flex-col">
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre del usuario"
+            class="input"
+            formControlName="nombre"
+          />
+          <div class="min-h-[20px] flex flex-col gap-3 py-3">
+            <p class="text-red-400" *ngIf="campoNoValido('nombre')">Debe de ser en formato nombre y apellido</p>
+          </div>
+        </div>
+      </div>
+      <!-- email -->
+      <div class="flex">
+        <h2 class="w-20">Email</h2>
+        <div class="flex flex-col">
+          <input
+            type="email"
+            name="name"
+            placeholder="email del usuario"
+            class="input"
+            formControlName="email"
+          />
+          <div class="min-h-[20px] flex flex-col gap-3 py-3">
+            <p class="text-red-400" *ngIf="campoNoValido('email')">El correo es obligatorio</p>
+          </div>
+        </div>
+      </div>
+      <!-- username -->
+      <div class="flex">
+        <h2 class="w-20">Username</h2>
+        <div class="flex flex-col">
+          <input
+            type="text"
+            name="name"
+            placeholder="username del usuario"
+            class="input"
+            formControlName="username"
+          />
+          <div class="min-h-[20px] flex flex-col gap-3 py-3">
+            <p class="text-red-400" *ngIf="campoRequerido('username')">El usuario es obligatorio</p>
+            <p class="text-red-400" *ngIf="campoNoStrider('username')">El usuario no puede ser Strider o Jean</p>
+          </div>
+        </div>
+      </div>
+      <!-- contraseña -->
+      <div class="flex">
+        <h2 class="w-20">Password</h2>
+        <div class="flex flex-col">
+          <input
+            type="password"
+            name="name"
+            placeholder="contraseña del usuario"
+            class="input"
+          />
+        </div>
+      </div>
+      <!-- Confirmar la constraseña -->
+      <div class="flex">
+        <h2 class="w-20">Confirmar</h2>
+        <div class="flex flex-col">
+          <input
+            type="password"
+            name="name"
+            placeholder="contraseña del usuario"
+            class="input"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex mt-3 justify-end">
+      <button
+        type="submit"
+        class="bg-blue-500 px-3 py-2 rounded-md hover:bg-blue-800 w-40"
+      >
+        Registrarme
+      </button>
+    </div>
+  </form>
+  <div class="flex flex-col space-y-3">
+      <h2 class="font-semibold text-2xl">Form Valid: {{miFormulario.valid}} </h2>
+      <h2 class="font-semibold text-2xl">Form Valid: {{miFormulario.controls['nombre'].errors | json}} </h2>
+      <h2 class="font-semibold text-2xl">Form Valid: {{miFormulario.controls['email'].errors | json}} </h2>
+      <h2 class="font-semibold text-2xl">Form Valid: {{miFormulario.controls['username'].errors | json}} </h2>
+  </div>
+</div>
