@@ -1,0 +1,70 @@
+<h1 class="font-semibold text-2xl mb-3">Selectores Anidados</h1>
+<hr class="w-full" />
+<form action="" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+  <div class="flex flex-col mt-3 gap-3">
+    <!-- regiones -->
+    <div class="flex flex-col w-[400px]">
+      <label for="continente">Continente:</label>
+      <select
+        name=""
+        id="continente"
+        class="ml-3 text-gray-700 px-3 py-2"
+        formControlName="region"
+      >
+        <option value="">--Seleccione Continente--</option>
+        <option *ngFor="let region of regiones" [value]="region | lowercase">
+          {{ region }}
+        </option>
+      </select>
+    </div>
+    <!-- paises -->
+    <div class="flex flex-col w-[400px]" *ngIf="paises.length !== 0">
+      <label for="pais">País:</label>
+      <select
+        name=""
+        id="pais"
+        class="ml-3 text-gray-700 px-3 py-2"
+        formControlName="pais"
+      >
+        <option value="">--Seleccione País--</option>
+        <option *ngFor="let pais of paises" [value]="pais.cca3">
+          {{ pais.name.common }}
+        </option>
+      </select>
+    </div>
+    <!-- fronteras -->
+    <div class="flex flex-col w-[400px]" *ngIf="fronteras.length !== 0">
+      <label for="frontera">Fronteras:</label>
+        <select
+          name=""
+          id="frontera"
+          class="ml-3 text-gray-700 px-3 py-2"
+          formControlName="frontera"
+        >
+          <option value="">--Seleccione el Páís Fronterizo--</option>
+          <option *ngFor="let frontera of fronteras" [value]="frontera.cca3">
+            {{ frontera.name.common }}
+          </option>
+        </select>
+    </div>
+  </div>
+  <div class="my-2" *ngIf="cargando">
+    <div class="bg-blue-500 p-3 rounded-xl">
+      <h2 class="">Cargando...</h2>
+    </div>
+  </div>
+  <div class="flex mt-3 justify-end">
+    <button
+      type="submit"
+      class="bg-blue-500 px-3 py-2 rounded-md hover:bg-blue-800 w-40"
+    >
+      Seleccionar
+    </button>
+  </div>
+</form>
+<div class="flex flex-col space-y-3">
+  <h2 class="font-semibold text-2xl">Formulario Valido:</h2>
+  <pre class="pl-4">{{ miFormulario.valid | json }}</pre>
+  <h2 class="font-semibold text-2xl">Formulario:</h2>
+  <pre class="pl-4">{{ miFormulario.value | json }}</pre>
+</div>

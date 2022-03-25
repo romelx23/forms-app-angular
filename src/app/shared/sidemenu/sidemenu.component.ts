@@ -31,5 +31,7 @@ export class SidemenuComponent {
    {texto:'Registro',ruta:'./auth/registro'},
    {texto:'Login',ruta:'./auth/login'},
   ]
-
+  paisesMenu:MenuItem[]=[
+    {texto:'Paises',ruta:'./paises/selector'},
+  ]
 }
