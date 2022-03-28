@@ -36,3 +36,12 @@
     >{{item.texto}}</li>
   </ul>
 </div>
+<div class="w-60 mt-6">
+  <h2 class="font-semibold text-2xl mb-3">Países</h2>
+  <hr />
+  <ul class="mt-3 flex flex-col gap-1">
+    <li *ngFor="let item of lifeMenu" class="list-none border border-transparent p-2 hover:border-white hover:cursor-pointer transition" [routerLink]="[item.ruta]"
+    routerLinkActive="bg-blue-600"
+    >{{item.texto}}</li>
+  </ul>
+</div>

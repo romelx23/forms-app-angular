@@ -34,4 +34,7 @@ export class SidemenuComponent {
   paisesMenu:MenuItem[]=[
     {texto:'Paises',ruta:'./paises/selector'},
   ]
+  lifeMenu:MenuItem[]=[
+    {texto:'Life Cicle',ruta:'./lifecicle/life'},
+  ]
 }

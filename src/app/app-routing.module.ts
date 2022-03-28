@@ -23,6 +23,10 @@ const routes: Routes = [
     path:'paises',
     loadChildren:()=>import('./paises/paises.module').then(m=>m.PaisesModule)
   },
+  {
+    path:'lifecicle',
+    loadChildren:()=>import('./lifecicle/lifecicle.module').then(m=>m.LifecicleModule)
+  },
 ];
 
 @NgModule({
